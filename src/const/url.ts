@@ -1,5 +1,5 @@
 export const URL = Object.freeze({
-  home: "/",
+  root: "/",
   auth: {
     root: "/auth",
     forgotPassword: "/auth/forgot-password",

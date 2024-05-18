@@ -9,6 +9,8 @@ import {
 } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { Typography } from "../base/Typography";
+import { Button } from "../ui/Button";
 import {
   Form,
   FormControl,
@@ -21,25 +23,24 @@ import { Input } from "../ui/Input";
 
 const validationSchema = z.object({
   email: z.string({ required_error: "Required Field" }).email("Invalid email"),
-  password: z.string({ required_error: "Required Field" }).min(8, "Too short"),
 });
 
 type Schema = z.infer<typeof validationSchema>;
 
 const initialValues = {
   email: "",
-  password: "",
 };
 
 type Props = {
   onFormSubmit: (values: Schema) => void;
 };
 
-export type LoginFormProps = ComponentPropsWithoutRef<"form"> & Props;
+export type ConfirmResetPasswordFormProps = ComponentPropsWithoutRef<"form"> &
+  Props;
 
-const LoginFormComponent: ForwardRefRenderFunction<
+const ConfirmResetPasswordFormComponent: ForwardRefRenderFunction<
   HTMLFormElement,
-  LoginFormProps
+  ConfirmResetPasswordFormProps
 > = (props, ref) => {
   const { onFormSubmit, className, ...rest } = props;
 
@@ -56,6 +57,13 @@ const LoginFormComponent: ForwardRefRenderFunction<
         className={cn("grid grid-cols-1 gap-4", className)}
         onSubmit={form.handleSubmit(onFormSubmit)}
       >
+        <header className="space-y-2 text-center">
+          <Typography level="h1" weight="medium" styling="h2">
+            Reset Password
+          </Typography>
+          <Typography isMuted>follow this steps, to reset password.</Typography>
+        </header>
+
         <FormField
           control={form.control}
           name="email"
@@ -70,22 +78,14 @@ const LoginFormComponent: ForwardRefRenderFunction<
           )}
         />
 
-        <FormField
-          control={form.control}
-          name="password"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Password</FormLabel>
-              <FormControl>
-                <Input type="password" placeholder="********" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        <Button type="submit" className="w-full">
+          Reset Password
+        </Button>
       </form>
     </Form>
   );
 };
 
-export const LoginForm = forwardRef(LoginFormComponent);
+export const ConfirmResetPasswordForm = forwardRef(
+  ConfirmResetPasswordFormComponent
+);

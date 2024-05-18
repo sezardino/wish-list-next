@@ -9,6 +9,7 @@ import {
 } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { Button } from "../ui/Button";
 import {
   Form,
   FormControl,
@@ -21,9 +22,6 @@ import { Input } from "../ui/Input";
 
 const validationSchema = z
   .object({
-    email: z
-      .string({ required_error: "Required Field" })
-      .email("Invalid email"),
     password: z
       .string({ required_error: "Required Field" })
       .min(8, "Too short"),
@@ -36,21 +34,20 @@ const validationSchema = z
 
 type Schema = z.infer<typeof validationSchema>;
 
-const initialValues = {
-  email: "",
+const initialValues: Schema = {
   password: "",
-  repeatPassword: "",
+  confirmPassword: "",
 };
 
 type Props = {
   onFormSubmit: (values: Schema) => void;
 };
 
-export type RegistrationFormProps = ComponentPropsWithoutRef<"form"> & Props;
+export type ChangePasswordFormProps = ComponentPropsWithoutRef<"form"> & Props;
 
-const RegistrationFormComponent: ForwardRefRenderFunction<
+const ChangePasswordFormComponent: ForwardRefRenderFunction<
   HTMLFormElement,
-  RegistrationFormProps
+  ChangePasswordFormProps
 > = (props, ref) => {
   const { onFormSubmit, className, ...rest } = props;
 
@@ -58,10 +55,6 @@ const RegistrationFormComponent: ForwardRefRenderFunction<
     resolver: zodResolver(validationSchema),
     defaultValues: initialValues,
   });
-
-  const submitHandler = (values: Schema) => {
-    console.log(values);
-  };
 
   return (
     <Form {...form}>
@@ -71,20 +64,6 @@ const RegistrationFormComponent: ForwardRefRenderFunction<
         className={cn("grid grid-cols-1 gap-4", className)}
         onSubmit={form.handleSubmit(onFormSubmit)}
       >
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input type="email" placeholder="Email" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
         <FormField
           control={form.control}
           name="password"
@@ -112,9 +91,13 @@ const RegistrationFormComponent: ForwardRefRenderFunction<
             </FormItem>
           )}
         />
+
+        <Button type="submit" className="w-full">
+          Change Password
+        </Button>
       </form>
     </Form>
   );
 };
 
-export const RegistrationForm = forwardRef(RegistrationFormComponent);
+export const ChangePasswordForm = forwardRef(ChangePasswordFormComponent);

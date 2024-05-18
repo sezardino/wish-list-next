@@ -55,6 +55,7 @@ const TypographyComponent: ForwardRefRenderFunction<
     styling = "base",
     isUnderlined,
     isMuted,
+    className,
     children,
   } = props;
 
@@ -65,7 +66,8 @@ const TypographyComponent: ForwardRefRenderFunction<
         stylingMap[styling],
         weightMap[weight],
         isUnderlined && "underline",
-        isMuted && "text-muted-foreground"
+        isMuted && "text-muted-foreground",
+        className
       )}
     >
       {children}

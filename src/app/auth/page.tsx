@@ -1,5 +1,6 @@
 "use client";
 
+import { Icon } from "@/components/base/Icon";
 import { Typography } from "@/components/base/Typography";
 import { LoginForm } from "@/components/forms/Login";
 import { RegistrationForm } from "@/components/forms/Registration";
@@ -34,6 +35,16 @@ const AuthPage = () => {
           Sign in to your account or create a new one
         </Typography>
       </header>
+
+      <Button asChild variant="link">
+        <Link href={URL.root}>
+          <Icon name="TbSignLeft" />
+          <Typography styling="small" level="span">
+            Back to home
+          </Typography>
+        </Link>
+      </Button>
+
       <Tabs
         asChild
         onValueChange={(tab) => setActiveTab(tab as AuthTab)}
@@ -49,7 +60,7 @@ const AuthPage = () => {
 
           <TabsContent asChild value={AuthTab.LOGIN}>
             <CardContent className="grid grid-cols-1 gap-4">
-              <LoginForm id={formId} />
+              <LoginForm id={formId} onFormSubmit={console.table} />
               <Link href={URL.auth.forgotPassword}>
                 <Typography styling="small" level="span" isUnderlined isMuted>
                   Forgot password?
@@ -60,7 +71,7 @@ const AuthPage = () => {
 
           <TabsContent asChild value={AuthTab.REGISTER}>
             <CardContent>
-              <RegistrationForm id={formId} />
+              <RegistrationForm id={formId} onFormSubmit={console.table} />
             </CardContent>
           </TabsContent>
 
