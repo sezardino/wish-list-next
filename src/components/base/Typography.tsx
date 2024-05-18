@@ -39,6 +39,7 @@ type Props = {
   level?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span";
   styling?: TypographyStyling;
   isMuted?: boolean;
+  isUnderlined?: boolean;
   weight?: TypographyWeight;
 };
 
@@ -52,6 +53,7 @@ const TypographyComponent: ForwardRefRenderFunction<
     level: Level = "p",
     weight = "normal",
     styling = "base",
+    isUnderlined,
     isMuted,
     children,
   } = props;
@@ -62,6 +64,7 @@ const TypographyComponent: ForwardRefRenderFunction<
       className={cn(
         stylingMap[styling],
         weightMap[weight],
+        isUnderlined && "underline",
         isMuted && "text-muted-foreground"
       )}
     >
