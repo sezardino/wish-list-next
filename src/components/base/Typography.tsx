@@ -38,9 +38,10 @@ const weightMap: Record<TypographyWeight, string> = {
 type Props = {
   level?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span";
   styling?: TypographyStyling;
+  weight?: TypographyWeight;
   isMuted?: boolean;
   isUnderlined?: boolean;
-  weight?: TypographyWeight;
+  isUppercase?: boolean;
 };
 
 export type TypographyProps = ComponentPropsWithRef<"p"> & Props;
@@ -53,6 +54,7 @@ const TypographyComponent: ForwardRefRenderFunction<
     level: Level = "p",
     weight = "normal",
     styling = "base",
+    isUppercase = false,
     isUnderlined,
     isMuted,
     className,
@@ -67,6 +69,7 @@ const TypographyComponent: ForwardRefRenderFunction<
         weightMap[weight],
         isUnderlined && "underline",
         isMuted && "text-muted-foreground",
+        isUppercase && "uppercase",
         className
       )}
     >
