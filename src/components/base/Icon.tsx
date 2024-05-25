@@ -6,10 +6,11 @@ import * as tbIcons from "react-icons/tb";
 export type HiIconNames = keyof typeof hiIcons;
 export type Hi2IconNames = keyof typeof hi2Icons;
 export type TbIconNames = keyof typeof tbIcons;
-export type IconNames = HiIconNames | Hi2IconNames | TbIconNames;
 export type IconRotate = "45" | "90" | "180" | "225" | "270" | "315";
 
-const icons = { ...hiIcons, ...hi2Icons, ...tbIcons };
+export const icons = { ...hiIcons, ...hi2Icons, ...tbIcons };
+export const IconNames = Object.keys(icons) as IconNames[];
+export type IconNames = HiIconNames | Hi2IconNames | TbIconNames;
 
 type Props = {
   name: IconNames;

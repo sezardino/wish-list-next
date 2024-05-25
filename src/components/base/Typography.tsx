@@ -59,10 +59,12 @@ const TypographyComponent: ForwardRefRenderFunction<
     isMuted,
     className,
     children,
+    ...rest
   } = props;
 
   return (
     <Level
+      {...rest}
       ref={ref}
       className={cn(
         stylingMap[styling],
