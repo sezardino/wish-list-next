@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 import { Pagination } from "@nextui-org/pagination";
 import { ComponentPropsWithoutRef, FC } from "react";
 import { Typography } from "../base/Typography";
-import { ListCard, ListCardProps } from "./ListCard/ListCard";
+import { ListCard, ListCardProps } from "./ListCard";
 
 type Props = {
   title: String;

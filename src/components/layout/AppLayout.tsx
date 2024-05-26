@@ -135,7 +135,7 @@ export const AppLayout = (props: AppLayoutProps) => {
           </div>
         </header>
 
-        <main className="flex-1 max-h-full p-5 pr-1 overflow-hidden overflow-y-auto rounded-tl-3xl bg-white">
+        <main className="flex-1 max-h-full overflow-hidden overflow-y-auto rounded-tl-3xl bg-white">
           {children}
         </main>
       </div>

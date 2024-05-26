@@ -1,6 +1,6 @@
 import { nextui } from "@nextui-org/theme";
 import type { Config } from "tailwindcss";
-import { listCardColors } from "./src/const/colors";
+import { tailwindListColors } from "./src/const/colors";
 
 const config = {
   darkMode: ["class"],
@@ -23,7 +23,7 @@ const config = {
     extend: {
       colors: {
         // list card colors start
-        ...listCardColors,
+        ...tailwindListColors,
         // list card colors end
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

@@ -4,12 +4,15 @@ import { Icon, IconNames } from "@/components/base/Icon";
 import { cn } from "@/lib/utils";
 import { Tooltip } from "@nextui-org/tooltip";
 
-import { DEFAULT_DAY_FORMAT } from "@/const";
+import {
+  DEFAULT_DAY_FORMAT,
+  ListColors,
+  ListColorsBackgroundMap,
+} from "@/const";
 import dayjs from "dayjs";
 import Link from "next/link";
 import { ComponentPropsWithRef, FC } from "react";
-import { Typography } from "../../base/Typography";
-import { ListCardColors, colorMap } from "./colors";
+import { Typography } from "../base/Typography";
 
 type Props = {
   name: string;
@@ -17,7 +20,7 @@ type Props = {
   itemsCount: number;
   lastModified: string;
   icon?: IconNames;
-  color?: ListCardColors;
+  color?: ListColors;
   link: string;
 };
 
@@ -50,8 +53,8 @@ export const ListCard: FC<ListCardProps> = (props) => {
       <Link
         href={link}
         className={cn(
-          `bg-clip-border bg-bla mx-4 rounded-xl overflow-hidden bg-gradient-to-tr text-white shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center`,
-          colorMap[color]
+          `bg-clip-border mx-4 rounded-xl overflow-hidden text-white shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center`,
+          ListColorsBackgroundMap[color]
         )}
         aria-label={name}
       >

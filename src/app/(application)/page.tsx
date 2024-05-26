@@ -1,9 +1,9 @@
 "use client";
 
 import { IconNames } from "@/components/base/Icon";
-import { ListCardProps } from "@/components/modules/ListCard/ListCard";
-import { ListCardColors } from "@/components/modules/ListCard/colors";
+import { ListCardProps } from "@/components/modules/ListCard";
 import { ListOfList } from "@/components/modules/ListOfList";
+import { ListColors } from "@/const";
 
 import { faker } from "@faker-js/faker";
 
@@ -18,12 +18,12 @@ const cards: (ListCardProps & { id: string })[] = new Array(9)
     lastModified: faker.date.recent().toISOString(),
     link: "#",
     icon: faker.helpers.arrayElement(IconNames),
-    color: faker.helpers.arrayElement(ListCardColors),
+    color: faker.helpers.arrayElement(ListColors),
   }));
 
 const RootPage = () => {
   return (
-    <div className="grid grid-cols-1 gap-20">
+    <div className="p-5 grid grid-cols-1 gap-20">
       <ListOfList title="Recently viewed" cards={cards.slice(0, 3)} />
 
       <ListOfList
